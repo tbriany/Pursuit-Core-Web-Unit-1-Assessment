@@ -5,36 +5,77 @@ let assert = require('assert')
 // Write a function called isOdd that returns whether or not a number is odd.
 // If something that is not a number is passed in, return false.
 
+const isOdd = (num) => {
+  if (num % 2 === 1) {
+    return true
+  } else if (Number(num) % 2 === 1) {
+    return true
+  } else {
+    return false
+  }
+}
+
 
 // Uncomment out the next line to test your solution
-// runQ1Tests()
+runQ1Tests()
 
 
 // Question Two:
 
 // Write a function called numberOfDigits that returns how many digits are in a given number
 
+const numberOfDigits = (num) => {
+  let newNumber = num.toString()
+  return newNumber.length
+}
+
 // Uncomment out the next line to test your solution
-// runQ2Tests()
+runQ2Tests()
 
 // Question Three:
 
 // Write a function called disemvowel that removes all of the vowels from a string.
 // Treat y as a consonant, not a vowel
 
+const disemvowel = (string) => {
+  let noVowels = [];
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== "a" && string[i] !== "e" && string[i] !== "i" && string[i] !== "o" && string[i] !== "u" &&
+        string[i] !== "A" && string[i] !== "E" && string[i] !== "I" && string[i] !== "O" && string[i] !== "U") {
+      noVowels.push(string[i])
+    }
+  }
+  let noVowel = noVowels.toString()
+  return noVowel.replace(/,/g, "")
+}
+
+
 // Uncomment out the next line to test your solution
-// runQ3Tests()
+runQ3Tests()
 
 // Question Four:
 // Write a function called secondSmallest that returns the second smallest number in an array
 
+const secondSmallest = (arr) => {
+  let sortedArr = arr.sort(function (a, b) {return a - b})
+  return sortedArr[1]
+}
+
 // Uncomment out the next line to test your solution
-// runQ4Tests()
+runQ4Tests()
 
 // Question Five:
 // Write a function called getLocations that takes in an array of objects that look like the array below,
 // and returns an array of the strings corresponding to the value of the location property
 // The output should be in the same order as the input
+
+const getLocations = (arr) => {
+  let locationsArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    locationsArray.push(arr[i].location)
+  }
+  return locationsArray
+}
 
 // Sample input:
 // [{location: "Algeria", population: 41}, {location: "Belize", population: 0.4}, {location: "China", population: 1386}, {location: "Denmark", population: 6}]
@@ -43,7 +84,7 @@ let assert = require('assert')
 // ["Algeria", "Belize", "China", "Denmark"]
 
 // Uncomment out the next line to test your solution
-// runQ5Tests()
+runQ5Tests()
 
 
 // Question Six:
@@ -51,8 +92,14 @@ let assert = require('assert')
 // Write a function called onlyOddStrings that takes in an array of strings as input and returns an array that only includes strings with an odd number of characters
 // Your function should use a higher-ordered function (e.g map, filter, reduce, every, sort) in its implementation
 
+const onlyOddStrings = (arr) => {
+  return arr.filter(function (elem) {
+    return elem.length % 2 !== 0
+  })
+}
+
 // Uncomment out the next line to test your solution
-// runQ6Tests()
+runQ6Tests()
 
 
 // Question Seven:
@@ -61,17 +108,32 @@ let assert = require('assert')
 // Make a class called Day
 // Give it two properties set by the constructor named temperature and weather
 // Give it a method named getDescription that returns a string in the format described below
-
 // Example
 // let myDay = Day(80, "sunny")
 // myDay.getDescription() // returns "It is 80 degrees and sunny"
+
+class Day {
+  constructor(temp, weather){
+    this.temp = temp,
+    this.weather = weather
+  }
+  getDescription() {
+    return (`It is ${this.temp} degrees and ${this.weather}`)
+  }
+}
 
 //b.
 // Make a function called getAllDayDescriptions that takes in an array of Day objects and returns an array of their descriptions.  Use a higher-ordered function (e.g map, filter, reduce, every, sort) in your implementation.
 // The output should be in the same order as the input
 
+const getAllDayDescriptions = (arr) => {
+  return arr.map(function (elem) {
+    return elem.getDescription()
+  })
+}
+
 // Uncomment out the next line to test your solution
-// runQ7Tests()
+runQ7Tests()
 
 
 
